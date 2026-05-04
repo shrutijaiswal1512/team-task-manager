@@ -1,0 +1,11 @@
+# Backend
+teamtaskmanager/.env
+teamtaskmanager/target/
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+
+# General
+.env
+*.log
