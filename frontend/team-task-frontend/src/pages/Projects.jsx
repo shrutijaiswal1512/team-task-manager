@@ -14,17 +14,17 @@ export default function Projects() {
   const role = localStorage.getItem("role")?.replace("ROLE_", "");
   const userId = localStorage.getItem("userId");
 
-  // ✅ FIXED useEffect
+  //  FIXED useEffect
   useEffect(() => {
     if (role === "ADMIN") {
       loadProjects();
       loadUsers();
     } else {
-      loadMyProjects();   // ✅ MEMBER
+      loadMyProjects();   //  MEMBER
     }
   }, []);
 
-  // ✅ ADMIN → all projects
+  //  ADMIN → all projects
   const loadProjects = async () => {
     try {
       const res = await API.get("/projects");
@@ -34,7 +34,7 @@ export default function Projects() {
     }
   };
 
-  // ✅ MEMBER → only assigned projects
+  //  MEMBER → only assigned projects
   const loadMyProjects = async () => {
     try {
       const res = await API.get(`/projects/user/${userId}`);
@@ -87,7 +87,7 @@ export default function Projects() {
         Projects
       </h2>
 
-      {/* ✅ ADMIN CREATE PROJECT */}
+      {/*  ADMIN CREATE PROJECT */}
       {role === "ADMIN" && (
         <div className="flex gap-3 mb-6">
 
@@ -129,7 +129,7 @@ export default function Projects() {
                 {p.name}
               </h3>
 
-              {/* ✅ ADMIN → project tasks */}
+              {/* ADMIN → project tasks */}
               {role === "ADMIN" ? (
                 <button
                   onClick={() => nav(`/tasks/${p.id}`)}
@@ -138,7 +138,7 @@ export default function Projects() {
                   Open Tasks →
                 </button>
               ) : (
-                // ✅ MEMBER → go to my tasks page
+                //  MEMBER → go to my tasks page
                 <button
                   onClick={() => nav("/my-tasks")}
                   className="text-green-600 text-sm"
@@ -149,7 +149,7 @@ export default function Projects() {
 
             </div>
 
-            {/* ✅ ADMIN ONLY → assign members */}
+            {/*  ADMIN ONLY → assign members */}
             {role === "ADMIN" && (
               <div className="mt-4">
 
